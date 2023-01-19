@@ -75,7 +75,34 @@ function carritoHtml() {
         `;
         carrito.appendChild(agregado);
     });
+let botonesEliminar = document.querySelectorAll(".btn-danger");
+botonesEliminar.forEach((btn) => {
+    btn.addEventListener("click" , eliminarProducto)
+})
 }
+function eliminarProducto(e) {
+    console.log(e);
+    console.log(e.target.id);
+} 
+
+// cdn de swet alert
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully'
+  })
+  
 
 
 
@@ -94,14 +121,14 @@ function filtrarDelete () {
  
  
  // esta linea esta suelta y no la entiendo  
-  carrito.addEventListener("click", eliminarProducto);
+ // carrito.addEventListener("click", eliminarProducto);
  
  
  
  
  // Eliminar productos del carrito
  
- function eliminarProducto(e) {
+ /* function eliminarProducto(e) {
      if (e.target.classList.contains("btn-danger")) {
          let productoID = e.target.getAttribute("id");
          productosCarrito = productosCarrito.filter(
@@ -109,7 +136,7 @@ function filtrarDelete () {
              );
              carritoHtml();
             }
-        }
+        } */
         
 
 
