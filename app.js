@@ -1,27 +1,3 @@
-/* fetch("https://jsonplaceholder.typicode.com/users/1/posts")
-.then((resp) => resp.json())
-.then((data) => console.log(data)) */
-
-const lista = document.querySelector("#listado")
-
-fetch("/data.json")
-.then((resp) => resp.json())
-.then((data) => {
-    data.forEach((producto) => {
-        const li = document.createElement("p");
-        li.innerHTML= `
-            <div class="card mb-3" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">Disponibilidad:${producto.texto}</p>
-                <p class="card-price">Precio: S${producto.precio}</p>
-                <a href="#" class="bPrueba btn btn-primary data-id=1">Comprar</a>
-                </div>
-            </div>
-        `;
-        lista.append(li);
-    }
-)})
 
 
    let nombreUsuario = document.querySelector("#exampleInputEmail1");
@@ -36,20 +12,42 @@ fetch("/data.json")
     )
     
     /* Respuesta de registro del formulario  */
- 
+    
     let formulario = document.querySelector("#formulario");
     
     let info = document.querySelector(".info");
-
- const pintarinfo = formulario.addEventListener("submit", function (e) {
-     e.preventDefault();
-     info.innerHTML = `
-     <div class="alert alert-warning" role="alert">
-     <h4> ¡Gracias ${nombreUsuario.value} por registrarse! </h4></div>
-     `;
+    
+    const pintarinfo = formulario.addEventListener("submit", function (e) {
+        e.preventDefault();
+        info.innerHTML = `
+        <div class="alert alert-warning" role="alert">
+        <h4> ¡Gracias ${nombreUsuario.value} por registrarse! </h4></div>
+        `;
     });
     
+    const lista = document.querySelector("#listado")
+    
+    fetch("/data.json")
+    .then((resp) => resp.json())
+    .then((data) => {
+        data.forEach((producto) => {
+            const li = document.createElement("div");
+            li.innerHTML= `
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">Disponibilidad:${producto.texto}</p>
+                    <p class="card-price">Precio: S${producto.precio}</p>
+                    <a href="#" class="bPrueba btn btn-primary data-id=1">Comprar</a>
+                    </div>
+                </div>
+            `;
+            lista.append(li);
+        }
+    )})
+ 
     /* Agregar productos y mostrarlos en el carrito    */
+ 
 
     
 const btnComprar = document.querySelectorAll(".bPrueba");
