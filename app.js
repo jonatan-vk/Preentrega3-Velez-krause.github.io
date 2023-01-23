@@ -2,13 +2,13 @@
 .then((resp) => resp.json())
 .then((data) => console.log(data)) */
 
-/* const lista = document.querySelector("#listado")
+const lista = document.querySelector("#listado")
 
 fetch("/data.json")
 .then((resp) => resp.json())
 .then((data) => {
     data.forEach((producto) => {
-        const li = document.createElement("div");
+        const li = document.createElement("p");
         li.innerHTML= `
             <div class="card mb-3" style="width: 18rem;">
                 <div class="card-body">
@@ -21,7 +21,7 @@ fetch("/data.json")
         `;
         lista.append(li);
     }
-)}) */
+)})
 
 
    let nombreUsuario = document.querySelector("#exampleInputEmail1");
@@ -52,8 +52,8 @@ fetch("/data.json")
     /* Agregar productos y mostrarlos en el carrito    */
 
     
-const btnComprar = document.querySelectorAll(".card");
-btnComprar.forEach((btnComprar)=>{ 
+const btnComprar = document.querySelectorAll(".bPrueba");
+btnComprar.forEach((btn)=>{ 
    /*  btnComprar.addEventListener('click', () => {
         // Obtener la información del producto
         const infoProducto = {
@@ -69,19 +69,19 @@ btnComprar.forEach((btnComprar)=>{
         // Mostrar los productos en el carrito
         carritoHtml();
     })}); */
-      btnComprar.addEventListener("click" , (e)=>{
+      btn.addEventListener("click" , (e)=>{
         chequearPruducto(e.target.parentElement)
     })
 })
 
 
-    // Array vacio para productos
+// Array vacio para productos
 
-    let productosCarrito = []
-    
-    function chequearPruducto(producto) {
-        const infoProducto = {
-            titulo: producto.querySelector(".card-title").textContent,
+let productosCarrito = []
+
+function chequearPruducto(producto) {
+    const infoProducto = {
+        titulo: producto.querySelector(".card-title").textContent,
             texto: producto.querySelector(".card-text").textContent,
             precio: producto.querySelector(".card-price").textContent,
             id : producto.querySelector(".btn").getAttribute("data-id"),
@@ -163,11 +163,11 @@ btnComprar.forEach((btnComprar)=>{
         });
         //console.log(confirmarCompra)
 
-    
-    // cdn de swet alert
-    const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
+        
+        // cdn de swet alert
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -311,7 +311,7 @@ function filtrarDelete () {
   if(productosCarritoLocalStorage) {
       productosCarrito = productosCarritoLocalStorage;
       carritoHtml();
-  } 
+    } 
   
   
   
@@ -365,4 +365,5 @@ function carritoHtml() {
             </div>`
         }
     }
- */
+    */
+//console.log(productosCarrito)
